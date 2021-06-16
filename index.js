@@ -89,7 +89,7 @@ Person.prototype.eat = function(edible){
     return this.tank += gallons
   }
   
-  
+
   
   /*
     TASK 3
@@ -98,18 +98,27 @@ Person.prototype.eat = function(edible){
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
+ function Baby(name, age, favoriteToy) {
+   Person.call(this, name, age, favoriteToy);
+   
+   this.favoriteToy = favoriteToy;
    
   }
  
+  Baby.prototype = Object.create(Person.prototype);
+
+  Baby.prototype.play = function(){
+     return `${this.name} is playing with their ${this.favoriteToy}`;
+    }
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. window binding is when you dont give "this" a meaning and it gives you the whole javascpript window
+    2. implicit binding is for objects with methods and the word left of the period is what "this" is refering to when
+    you call to invoke the function
+    3. explicit binding can use 3 methods call, apply, and bind. we can call a function with an object when the function is out side of the object
+    4. new binding creates a new object with the keyword "new" and "this" points to the new object when a function is invoked as a constructor function
   */
   
   
